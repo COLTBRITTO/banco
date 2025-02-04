@@ -1,0 +1,70 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Itau</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+        input, button {
+            margin: 10px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Banco Itau</h1>
+        <p><strong>Nome:</strong> Mateus Henrique Fre</p>
+        <p><strong>Agência:</strong> 2025</p>
+        <p><strong>Conta:</strong> 0001</p>
+        <img id="logo" src="logo.png" alt="Seu Banco" onerror="this.onerror=null; this.src='https://via.placeholder.com/100?text=Logo';">
+        <h2>Saldo: R$ <span id="saldo">0.00</span></h2>
+        <input type="number" id="valor" placeholder="Digite o valor">
+        <br>
+        <button onclick="depositar()">Depositar</button>
+        <button onclick="retirar()">Retirar</button>
+    </div>
+
+    <script>
+        let saldo = 0;
+        function atualizarSaldo() {
+            document.getElementById("saldo").innerText = saldo.toFixed(2);
+        }
+        function depositar() {
+            let valor = parseFloat(document.getElementById("valor").value);
+            if (valor > 0) {
+                saldo += valor;
+                atualizarSaldo();
+            } else {
+                alert("Digite um valor válido");
+            }
+        }
+        function retirar() {
+            let valor = parseFloat(document.getElementById("valor").value);
+            if (valor > 0 && valor <= saldo) {
+                saldo -= valor;
+                atualizarSaldo();
+            } else {
+                alert("Saldo insuficiente ou valor inválido");
+            }
+        }
+    </script>
+</body>
+</html>
